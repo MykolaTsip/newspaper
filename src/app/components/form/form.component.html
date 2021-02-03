@@ -1,0 +1,29 @@
+<div class="formaLogin">
+<form [formGroup]="formLogin" (ngSubmit)="login(formLogin)" [ngStyle]="{display: viewForm ? 'block' : 'none' }">
+  <div>
+    LOGIN
+  </div>
+  <input type="text" formControlName="login" name="login">
+  <div *ngIf="formLogin.controls.login.invalid && formLogin.controls.login.touched">
+    you must have enter LOGIN
+  </div>
+  <div>
+    PASSWORD
+  </div>
+  <input type="text" formControlName="password" name="password">
+  <div *ngIf="formLogin.hasError('lengthErr') && formLogin.controls.password.touched">
+bed length
+  </div>
+  <div class="butt">
+   <button [disabled]="formLogin.untouched || formLogin.invalid">show my newspaper</button>
+  </div>
+</form>
+</div>
+
+<div *ngIf="!viewForm">
+  <div class="exitAcc">
+  <button (click)="exit()" >Exit with account</button>
+  </div>
+  <hr>
+  <app-channel></app-channel>
+</div>

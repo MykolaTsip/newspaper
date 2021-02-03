@@ -1,0 +1,20 @@
+.menu {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+a {
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 10px 15px;
+  border: 2px solid aqua;
+}
+
+a:hover {
+  background-color: blue;
+}
+
+
