@@ -52,13 +52,13 @@ export class ChannelComponent implements OnInit {
         }
       );
 
-    this.router.navigate(['nasa'], {state: {RssData: this.RssData}});
+    // this.router.navigate(['nasa'], {state: {RssData: this.RssData}});
 
 
-    // const url = this.router.serializeUrl(
-    //   this.router.createUrlTree(['/nasa'])
-    // );
-    // window.open(url, '_blank');
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree(['/nasa'])
+    );
+    window.open(url, '_blank');
 
 
   }
@@ -87,13 +87,13 @@ export class ChannelComponent implements OnInit {
         }
       );
 
-    this.router.navigate(['reddit'], {state: {RssData: this.RssData}});
+    // this.router.navigate(['reddit'], {state: {RssData: this.RssData}});
 
 
-    // const url = this.router.serializeUrl(
-    //   this.router.createUrlTree(['/reddit'])
-    // );
-    // window.open(url, '_blank');
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree(['/reddit'])
+    );
+    window.open(url, '_blank');
 
 
   }
@@ -122,16 +122,13 @@ export class ChannelComponent implements OnInit {
         }
       );
 
-    this.router.navigate(['mobileWorldLive'], {state: {RssData: this.RssData}});
-
-    // setTimeout(() => {
-    //   const url = this.router.serializeUrl(
-    //     this.router.createUrlTree(['/mobileWorldLive'])
-    //   );
-    //   window.open(url, '_blank');
-    // }, 100);
+    // this.router.navigate(['mobileWorldLive'], {state: {RssData: this.RssData}});
 
 
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree(['/mobileWorldLive'])
+    );
+    window.open(url, '_blank');
   }
 }
 
