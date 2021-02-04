@@ -10,8 +10,12 @@ export interface IRssObject {
 export interface IRssChannel {
   "atom:link": Array<string>;
   description: Array<string>;
-  image: Array<IRssImage>;
-  item: Array<IRssItem>;
+  image:
+    // Array<string>;
+    Array<IRssImage>;
+  item:
+    // Array<string>;
+  Array<IRssItem>;
   language: Array<string>;
   lastBuildDate: Date;
   link: Array<string>;
