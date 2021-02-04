@@ -1,6 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NewsRss} from '../../news-rss';
-import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-article',
@@ -8,18 +7,23 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
-   RssData: NewsRss;
+  RssData: NewsRss;
 
-  constructor(private activatedRoute: ActivatedRoute) {
-    this.RssData = JSON.parse(localStorage.getItem('rss'));
-    setTimeout(() => {
-    localStorage.removeItem('rss');
-    }, 10);
+  constructor() {
   }
 
 
-
   ngOnInit(): void {
+    this.showNews();
+  }
+
+
+  async showNews(): Promise<void> {
+    setTimeout(() => {
+      this.RssData = JSON.parse(localStorage.getItem('rss'));
+
+      localStorage.clear();
+    }, 250);
   }
 
 }
