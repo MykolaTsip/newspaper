@@ -1,8 +1,9 @@
 import {Component, OnInit, DoCheck} from '@angular/core';
-import {NewsRss} from '../../news-rss';
 import * as xml2js from 'xml2js';
 import {ChannelService} from '../../services/channel.service';
 import {Router} from '@angular/router';
+import {NewsRss} from '../../models/news-rss';
+import {NewsFeed} from '../../models/news-feed';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class ChannelComponent implements OnInit {
 
 
   RssData: NewsRss;
+  FeedData: NewsFeed;
 
   constructor(
     private router: Router,
@@ -32,7 +34,6 @@ export class ChannelComponent implements OnInit {
       .subscribe(data => {
           xml2js.parseString(data, (err, result: NewsRss) => {
             this.RssData = result;
-
 
             if(!localStorage.getItem('rss')) {
                 localStorage.setItem('rss', JSON.stringify(this.RssData));
@@ -55,15 +56,16 @@ export class ChannelComponent implements OnInit {
   RedditRssData(): void {
     this.channelService.reddit()
       .subscribe(data => {
-          xml2js.parseString(data, (err, result: NewsRss) => {
-            this.RssData = result;
+          xml2js.parseString(data, (err, result: NewsFeed) => {
+            this.FeedData = result;
+            console.log(this.FeedData);
 
-            if(!localStorage.getItem('rss')) {
-              localStorage.setItem('rss', JSON.stringify(this.RssData));
+            if(!localStorage.getItem('feed')) {
+              localStorage.setItem('feed', JSON.stringify(this.FeedData));
             }
             else {
-              localStorage.removeItem('rss');
-              localStorage.setItem('rss', JSON.stringify(this.RssData));
+              localStorage.removeItem('feed');
+              localStorage.setItem('feed', JSON.stringify(this.FeedData));
             }
 
             const url = this.router.serializeUrl(
@@ -98,10 +100,7 @@ export class ChannelComponent implements OnInit {
           });
         }
       );
-
-
   }
+
 }
 
-export interface IRssData {
-}

@@ -2,22 +2,40 @@
 
 <div *ngIf="RssData">
   <h2>
-    {{RssData.rss?.channel[0].title || RssData.feed.title}}
+    {{RssData.rss?.channel[0].title}}
   </h2>
   <p>
     Total Item:
-    {{RssData.rss?.channel[0].item.length || RssData.feed.entry.length}}
+    {{RssData.rss?.channel[0].item.length }}
   </p>
   <ul *ngIf="RssData.rss?.channel[0]">
     <li *ngFor="let o of RssData.rss?.channel[0].item"><a href="{{o.link[0]}}" target="_blank">{{o.title[0]}}</a>
       <br>
       <i>{{o.pubDate}}</i>
-    </li>
-  </ul>
-  <ul *ngIf="RssData.feed">
-    <li *ngFor="let o of RssData.feed?.entry"><a href="{{o.link[0].$.href}}" target="_blank">{{o.title[0]}}</a>
       <br>
-    <i>{{o.updated}}</i>
+      <button (click)="deleteItem(o)">delete article</button>
     </li>
   </ul>
 </div>
+
+
+
+<div *ngIf="FeedData">
+  <h2>
+    {{ FeedData.feed?.title}}
+  </h2>
+  <p>
+    Total Item:
+    {{ FeedData.feed?.entry.length}}
+  </p>
+  <ul>
+    <li *ngFor="let o of FeedData.feed?.entry"><a href="{{o.link[0].$.href}}" target="_blank">{{o.title[0]}}</a>
+      <br>
+      <i>{{o.updated}}</i>
+      <br>
+      <button (click)="deleteEntry(o)"> delete article</button>
+    </li>
+  </ul>
+</div>
+
+

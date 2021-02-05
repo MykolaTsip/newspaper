@@ -1,5 +1,5 @@
 export interface NewsRss {
-  rss: IRssObject;
+  rss?: IRssObject;
 }
 
 export interface IRssObject {
@@ -10,12 +10,8 @@ export interface IRssObject {
 export interface IRssChannel {
   "atom:link": Array<string>;
   description: Array<string>;
-  image:
-    // Array<string>;
-    Array<IRssImage>;
-  item:
-    // Array<string>;
-  Array<IRssItem>;
+  image: Array<IRssImage>;
+  item: Array<IRssItem>;
   language: Array<string>;
   lastBuildDate: Date;
   link: Array<string>;
