@@ -27,8 +27,6 @@ export class ArticleComponent implements OnInit {
       } else {
         this.FeedData = JSON.parse(localStorage.getItem('feed'));
       }
-
-      localStorage.clear();
     }, 300);
   }
 

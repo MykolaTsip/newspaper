@@ -1,22 +1,50 @@
+<div [ngStyle]="{textAlign: 'center', fontSize: '20px', marginTop: '20px', marginBottom: '60px'}">
+  <b>Breaking news:</b>
+</div>
 <div class="menu">
-<div>
-<a (click)="NasaRssData()">
-  show NASA news
-</a>
+  <div>
+    <a (click)="NasaRssData()">
+      show NASA news
+    </a>
+  </div>
+
+  <div>
+    <a (click)="RedditRssData()">
+      show REDDIT news
+    </a>
+  </div>
+
+  <div>
+    <a (click)="MobileRssData()">
+      show mobile world live live news
+    </a>
+  </div>
 </div>
 
-<div>
-<a (click)="RedditRssData()">
-  show REDDIT news
-</a>
-</div>
 
-<div>
-<a (click)="MobileRssData()">
-  show mobile world live live news
-</a>
-</div>
-</div>
 <hr>
+<div class="userNews">
+  <p>
+    add url (type rss) for you app
+  </p>
+  <input type="text" [(ngModel)]="newsUser">
+  <button (click)="addChannel(newsUser)">ADD CHANNEL</button>
+  <button (click)="showNews()" [ngStyle]="{marginLeft: '15px'}">{{'show me news' | uppercase}}</button>
+</div>
+
+
+<hr [ngStyle]="{marginTop: '20px', marginBottom: '10px'}">
+<div *ngIf="userChannel" class="renderNews">
+  <ol>
+    <li *ngFor="let channel of userChannel">
+      <button (click)="toChannel(channel)">{{channel.title | uppercase}}</button>
+      <button (click)="deleteChannel(channel.id)" class="deleteButt" [ngStyle]="{backgroundColor: 'aqua'}">DELETE CHANNEL</button>
+     <div>
+      <input type="text" [(ngModel)]="newTitle">
+      <button (click)="renameTitle(newTitle, channel.id)">RENAME CHANNEL</button>
+     </div>
+    </li>
+  </ol>
+</div>
 <router-outlet></router-outlet>
 

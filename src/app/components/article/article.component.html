@@ -13,6 +13,7 @@
       <br>
       <i>{{o.pubDate}}</i>
       <br>
+      <br>
       <button (click)="deleteItem(o)">delete article</button>
     </li>
   </ul>
@@ -32,6 +33,7 @@
     <li *ngFor="let o of FeedData.feed?.entry"><a href="{{o.link[0].$.href}}" target="_blank">{{o.title[0]}}</a>
       <br>
       <i>{{o.updated}}</i>
+      <br>
       <br>
       <button (click)="deleteEntry(o)"> delete article</button>
     </li>

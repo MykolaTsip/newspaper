@@ -4,6 +4,28 @@
   margin: 20px 0;
 }
 
+.userNews {
+  margin-left: 10px;
+}
+
+.userNews p {
+  font-size: 20px;
+}
+
+.userNews input {
+  width: 500px;
+  height: 30px;
+}
+
+.userNews button {
+  padding: 10px 15px;
+  background-color: aqua;
+}
+
+.userNews button:hover {
+  background-color: blue;
+}
+
 a {
   font-size: 16px;
   text-decoration: none;
@@ -17,4 +39,26 @@ a:hover {
   background-color: blue;
 }
 
+.renderNews ol li button{
+  margin: 15px 10px;
+  background-color: white;
+  padding: 10px 25px;
+  border: 2px solid aqua;
+  border-radius: 2px;
 
+}
+
+.renderNews ol li button:hover {
+  background-color: blue;
+}
+
+.renderNews ol li {
+  border: 1px solid black;
+  margin: 20px 0;
+}
+
+.renderNews ol li input {
+  width: 330px;
+  height: 30px;
+  margin-left: 10px;
+}

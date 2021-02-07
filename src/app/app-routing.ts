@@ -8,13 +8,7 @@ const routes: Routes = [
     path: '', component: FormComponent
   },
   {
-    path: 'nasa', component: ArticleComponent
-  },
-  {
-    path: 'reddit', component: ArticleComponent
-  },
-  {
-    path: 'mobileWorldLive', component: ArticleComponent
+    path: ':channel', component: ArticleComponent
   }
 ];
 

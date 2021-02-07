@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
-import {Token} from '../../models/Token';
+
 
 
 @Component({
@@ -11,7 +11,7 @@ import {Token} from '../../models/Token';
 })
 export class FormComponent implements OnInit {
   formLogin: FormGroup;
-  viewForm = true;
+  viewForm: boolean;
   tokens: object;
 
   constructor(private userService: UserService) {
@@ -23,7 +23,11 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    if(localStorage.getItem('token')) {
+      this.viewForm = false;
+    } else {
+      this.viewForm = true;
+    }
   }
 
   validateFormPass(form: FormGroup): null | object {
@@ -41,19 +45,21 @@ export class FormComponent implements OnInit {
 
     this.userService.login(user)
       .subscribe(value => {
-        console.log(value);
         if (typeof value === 'object') {
           this.tokens = value;
+          localStorage.setItem('token', JSON.stringify(this.tokens));
           this.viewForm = false;
         }
       });
   }
 
   exit(): void {
-    this.userService.exit(this.tokens)
+    this.userService.exit()
       .subscribe(value => {
-        console.log(value);
-        this.viewForm = true;
+        if (typeof value === 'number') {
+          this.viewForm = true;
+          localStorage.removeItem('token');
+        }
       });
   }
 }
